@@ -12,13 +12,15 @@ public class Main{
             ch[i] = str.charAt(i);
         }
         
-        int sum = 0;
-        int hash = 1;
-        for(int j = 0; j < num; j++){
-            sum += ((int)ch[j] - 'a' + 1) * hash;
-            hash *= 31;
-        }
-        System.out.println(sum);
+        long sum = 0;
+		long hash = 1;
+		for (int j = 0; j < num ;j++) {
+			sum += ((ch[j] - 'a' + 1) * hash);
+			//곱해줄때마다 1234567891을 나눠주면 long을 넘지 않음
+			hash = (hash * 31) % 1234567891;
+			
+		}
+		System.out.println(sum % 1234567891);
         
     }
 }
